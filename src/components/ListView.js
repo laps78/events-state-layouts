@@ -3,10 +3,19 @@ import ShopItem from "./ShopItem";
 function ListView(props) {
   return (
     <section className="ListView">
-      <h1>ListView</h1>
-      <ShopItem />
-      <ShopItem />
-      <ShopItem />
+      {
+        Array.from(props.products).map((product, productIndex) => {
+          return (
+            <ShopItem
+              key={productIndex}
+              name={product.name.toUpperCase()}
+              price={product.price}
+              color={product.color}
+              img={product.img}
+            />
+          )
+        })
+      }
     </section>
   );
 }

@@ -5,21 +5,27 @@ import ListView from "./ListView";
 
 function Store(props) {
   const [viewState, setViewState] = useState('Cards');
+  const [currentIcon, setCurrentIcon] = useState('view_list');
 
   return (
     <div className="Store">
       <header>
         <IconSwitch
-          icon={"view_list"}
+          icon={currentIcon}
           onSwitch={() => {
-            (viewState === 'Cards') ? setViewState('List') : setViewState('Cards')
-            console.log('change state here');
+            if (viewState === 'Cards') {
+              setViewState('List');
+              setCurrentIcon('view_module');
+            } else {
+              setViewState('Cards');
+              setCurrentIcon('view_list');
+            };
           }}
         />
       </header>
-      <section className="shop">
+      <div className="shop">
         {(viewState === "List") ? <ListView products={props.products} /> : <CardsView products={props.products} />}
-      </section>
+      </div>
     </div>
   );
 }

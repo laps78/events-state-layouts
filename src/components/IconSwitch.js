@@ -3,7 +3,9 @@ function IconSwitch(props) {
     <div
       className="IconSwitch"
       onClick={props.onSwitch}>
-      IconSwitch
+        <span className="material-icons">
+          {props.icon}
+        </span>
     </div>
   );
 }
